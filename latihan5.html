@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React List with Unique Keys</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function ItemList() {
+            const items = [
+                { id: 1, name: 'Apple' },
+                { id: 2, name: 'Banana' },
+                { id: 3, name: 'Cherry' },
+                { id: 4, name: 'Date' },
+                { id: 5, name: 'Elderberry' }
+            ];
+
+            return (
+                <ul>
+                    {items.map(item => (
+                        <li key={item.id}>{item.name}</li>
+                    ))}
+                </ul>
+            );
+        }
+
+        ReactDOM.render(<ItemList />, document.getElementById('root'));
+    </script>
+</body>
+</html>
