@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Form Input</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function UserInputForm() {
+            const [inputValue, setInputValue] = useState("");
+            const [submittedValue, setSubmittedValue] = useState("");
+
+            const handleInputChange = (event) => {
+                setInputValue(event.target.value);
+            };
+
+            const handleSubmit = (event) => {
+                event.preventDefault();
+                setSubmittedValue(inputValue);
+            };
+
+            return (
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Enter something:
+                            <input type="text" value={inputValue} onChange={handleInputChange} />
+                        </label>
+                        <button type="submit">Submit</button>
+                    </form>
+                    {}
+                    {submittedValue && (
+                        <div>
+                            <h2>You entered:</h2>
+                            <p>{submittedValue}</p>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<UserInputForm />, document.getElementById('root'));
+    </script>
+</body>
+</html>
