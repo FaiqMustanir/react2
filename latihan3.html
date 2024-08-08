@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Component with State</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Import React and ReactDOM from a CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Import Babel to transpile JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Your React component script using JSX -->
+    <script type="text/babel">
+        const { useState } = React;
+
+        function Counter() {
+            // Declare a state variable named "count" and a function to update it
+            const [count, setCount] = useState(0);
+
+            // Function to handle the button click event
+            const handleClick = () => {
+                setCount(count + 1);
+            };
+
+            return (
+                <div>
+                    <h1>Count: {count}</h1>
+                    <button onClick={handleClick}>Increment</button>
+                </div>
+            );
+        }
+
+        // Render the component to the HTML element with id "root"
+        ReactDOM.render(<Counter />, document.getElementById('root'));
+    </script>
+</body>
+</html>
