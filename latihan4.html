@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Conditional Rendering</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function UserGreeting({ name }) {
+            return <h1>Welcome back, {name}!</h1>;
+        }
+
+        function GuestGreeting() {
+            return <h1>Please sign up or log in.</h1>;
+        }
+
+        function Greeting() {
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+            const toggleLogin = () => {
+                setIsLoggedIn(!isLoggedIn);
+            };
+
+            return (
+                <div>
+                    {}
+                    {isLoggedIn ? <UserGreeting name="John Doe" /> : <GuestGreeting />}
+                    
+                    {}
+                    <button onClick={toggleLogin}>
+                        {isLoggedIn ? "Logout" : "Login"}
+                    </button>
+                </div>
+            );
+        }
+
+        // Render the component to the HTML element with id "root"
+        ReactDOM.render(<Greeting />, document.getElementById('root'));
+    </script>
+</body>
+</html>
